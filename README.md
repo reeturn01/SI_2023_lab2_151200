@@ -34,3 +34,12 @@
 |67.2 -> 74| | |*|*|
 |68 -> 69| | |*| |
 |68 -> 67.3| | | |*|
+
+### **Тест случаеви според критериум Multiple Condition**
+
+| user==null \|\| user.getPassword()==null \|\| user.getEmail()==null ||
+| :---- | :---- |
+| TXX | user = NULL |
+| FTX | user = User (username := ANY| password := NULL | email := ANY) |
+| FFT | user = User (username := ANY| password := "123" | email := NULL) |
+| FFF | user = User (username := ANY | password := "123" | email := "test@mail.com") |
