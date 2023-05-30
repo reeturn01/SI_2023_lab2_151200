@@ -12,34 +12,36 @@
 
 ### **Тест случаи според критериумот Every Branch**
 
-|C1|user = NULL, allUsers = NULL|user = User(username := NULL, password := "test.test", email := "test.test@mail.com)", allUsers = List(User(username := "test.test@mail.com"), password := ANY, email := "test.test@mail.com"))|user = User(username := "hello", password := "1 3456789", email := "test@mail.com"), allUsers = NULL|user = User(username := "hello", password := "1 3456789", email := "test@mail.com"), allUsers = NULL|
-|:----|:----|:----|:----|:----|
-|36 -> 37|*| | | |
-|36 -> 40| |*|*|*|
-|40 -> 41| |*| | |
-|40 -> 44, 45| | |*|*|
-|44, 45 -> 46, 47.1| |*| | |
-|44, 45 -> 58, 59, 60, 62| | |*|*|
-|47.2 -> 48, 49| |*| | |
-|47.2 -> 58, 59, 60, 62| |*| | |
-|48, 49 -> 50| |*| | |
-|48, 49 -> 52| | | | |
-|52 -> 53| |*| | |
-|52 -> 47.3| | | | |
-|58, 59, 60, 62 -> 63| |*| | |
-|58, 59, 60, 62 -> 66| | |*|*|
-|66 -> 67.1| | |*|*|
-|66 -> 74| | | | |
-|67.2 -> 68| | |*|*|
-|67.2 -> 74| | |*|*|
-|68 -> 69| | |*| |
-|68 -> 67.3| | | |*|
+|C1|user = NULL, allUsers = NULL|user = User(username := NULL, password := "test.test@mail.com", email := "test.test@mail.com)", allUsers = List(User(username := "test.test@mail.com", password := ANY, email := "test.test@mail.com"), User(username := "a", "a", "a.@mail.com"))|user = User(username := "hello", password := "1!3456789", email := "test@mail.com"), allUsers = List()|user = User(username := "hello", password := "1~3456789", email := "test@mail.com"), allUsers = List()|user = User(username := "hello", password := "1 3456789", email := "test@mail.com"), allUsers = List()|
+|:----|:----|:----|:----|:----|:----|
+|36 -> 37|*| | | | |
+|36 -> 40| |*|*|*|*|
+|40 -> 41| |*| | | |
+|40 -> 44, 45| | |*|*|*|
+|44, 45 -> 46, 47.1| |*| | | |
+|44, 45 -> 58, 59, 60, 62| | |*|*|*|
+|47.2 -> 48, 49| |*| | | |
+|47.2 -> 58, 59, 60, 62| |*| | | |
+|48, 49 -> 50| |*| | | |
+|48, 49 -> 52| |*| | | |
+|52 -> 53| |*| | | |
+|52 -> 47.3| |*| | | |
+|58, 59, 60, 62 -> 63| |*| | | |
+|58, 59, 60, 62 -> 66| | |*|*|*|
+|66 -> 67.1| | |*|*| |
+|66 -> 74| | | | |*|
+|67.2 -> 68| | |*|*| |
+|67.2 -> 74| | | |*| |
+|68 -> 69| | |*| | |
+|68 -> 67.3| | | |*| |
+
 
 ### **Тест случаеви според критериум Multiple Condition**
 
-| user==null \|\| user.getPassword()==null \|\| user.getEmail()==null ||
-| :---- | :---- |
-| TXX | user = NULL |
-| FTX | user = User (username := ANY| password := NULL | email := ANY) |
-| FFT | user = User (username := ANY| password := "123" | email := NULL) |
-| FFF | user = User (username := ANY | password := "123" | email := "test@mail.com") |
+|user==null \|\| user.getPassword()==null \|\| user.getEmail()==null| |
+|:----|:----|
+|TXX|user = NULL, allUsers = ANY|
+|FTX|user = User (username := "", password := NULL, email := ANY), allUsers = NULL|
+|FFT|user = User (username := "", password := "123", email := NULL), allUsers = NULL|
+|FFF|user = User (username := "", password := "123", email := "test@mail.com"), allUsers = List()|
+
